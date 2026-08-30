@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Comic+Relief:wght@400;700&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --roxo-padrao: #6E4B87;
+    --roxinho: #8C719F;
+}
+
+.home {
+    background-image: url('../../assets/img/FundoHome.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+
+    height: 100vh;
+    overflow: hidden;
+}
+
+.divMaster {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+    margin-left: 32px;
+}
+
+.title {
+    color: #431166;
+    line-height: 90px;
+    font-family: "Comic Relief", system-ui;
+    font-weight: bold;
+    font-size: 102px;
+}
+
+.subtitle {
+    color: var(--roxinho);
+    font-weight: 600;
+    font-size: 32px;
+    margin-left: 40px;
+}
+
+.subtitle2 {
+    color: var(--roxinho);
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.botao {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn1 {
+    color: var(--roxo-padrao);
+    font-weight: 400;
+    font-size: 22px;
+    text-decoration: none;
+    gap: 16px;
+    border: 1px solid var(--roxo-padrao);
+    border-radius: 8px;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+}
+
+.btn1:hover {
+    background-color: #9b4ed1;
+    color: aliceblue;
+}
+
+.btn2 {
+    color: var(--roxo-padrao);
+    font-weight: 400;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: var(--roxo-padrao);
+    color: aliceblue;
+    border-radius: 8px;
+    padding: 12px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn2:hover {
+    background-color: #9b4ed1;
+    color: aliceblue;
+    border: 1px solid var(--roxo-padrao);
+}
