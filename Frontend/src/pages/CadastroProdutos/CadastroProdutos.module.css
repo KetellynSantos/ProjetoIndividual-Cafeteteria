@@ -11,18 +11,10 @@
 .sec {
     background-color: #EEEEEF;
     height: 100vh;
-    display: flex;
     gap: 24px;
-}
-
-.imgLateral {
-    width: 420px;
-    flex-shrink: 0;
-
-    background-image: url('../../assets/img/imgLateral.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -37,8 +29,9 @@
     background-color: #f8f8f8;
     border-radius: 6px;
     height: 80vh;
-    width: 60vw;
-    padding: 32px 48px;
+    width: 80%;
+    padding: 22px 20px;
+    box-shadow: 0px 0px 20px 10px #6e4b87;
 }
 
 .titles {
@@ -51,20 +44,20 @@
     display: flex;
     flex-direction: column;
     text-align: left;
+    line-height: 1px;
 }
 
 h1 {
     color: #431166;
     font-family: "Comic Relief", system-ui;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
 }
 
 p {
     font-family: "Comic Relief", system-ui;
     color: #8C719F;
-    font-size: 20px;
-    margin-top: -16px;
+    font-size: 12px;
 }
 
 /* 
@@ -76,6 +69,8 @@ form {
 display: flex;
 flex-direction: column;
 justify-content: center;
+padding: 12px;
+margin-top: 60px;
 }
 
 .linha {
@@ -212,8 +207,7 @@ justify-content: center;
     Área reservada para a imagem do produto.
 */
 .imagemProduto {
-    width: 300px;                /* Largura */
-    min-height: 100px;             /* Altura mínima */
+    width: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,15 +215,6 @@ justify-content: center;
     background-color: #d8c7e3;
     border-radius: 4px; 
     text-align: center;
-    padding: 8px;
-}
-
-
-/* 
-    Ícone da imagem.
-*/
-.imagemProduto span {
-    font-size: 28px;             /* Tamanho do ícone */
 }
 
 
@@ -237,16 +222,37 @@ justify-content: center;
     Título da área de imagem.
 */
 .imagemProduto strong {
-    margin-top: 4px;
     font-size: 12px;
-    color: #4b2865;          
+    color: #4b2865;     
 }
 
 /* 
     Texto menor da área de imagem.
 */
 .imagemProduto small {
-    margin-top: 2px;
     font-size: 8px;
     color: #8c719f;
+    line-height: 1;
+}
+
+.imagemProduto input {
+    display: none;
+}
+
+.imagemProduto {
+    width: 250px;
+    height: 150px;
+
+    border: 3px dashed #5314a7;
+    border-radius: 12px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    text-align: center;
+    gap: 10px;
 }

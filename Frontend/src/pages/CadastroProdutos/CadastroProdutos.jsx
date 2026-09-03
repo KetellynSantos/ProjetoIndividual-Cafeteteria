@@ -1,12 +1,127 @@
+import { useState } from 'react';
 import styles from '../CadastroProdutos/CadastroProdutos.module.css'
 import icon from '../../assets/icon/xicaraTexto.png'
-import update from '../../assets/icon/envioimg.png'
+import { cadastrarProduto } from "../../services/produtoService";
+import conclusao from '../../assets/icon/tarefa-concluida.png'
+import download from '../../assets/icon/download-da-nuvem.png'
 
 
 function CadastroProduto() {
+
+    const [produto, setProduto] = useState({
+    nomeProduto: "",
+    categoria: "",
+    descricao: "",
+    preco: "",
+    tamanho: "",
+    ingredientes: "",
+    dadosImagem: null
+    });
+
+    const [imagemSelecionada, setImagemSelecionada] = useState(null);
+
+
+    function cadastrarProdutoPost(e) {
+
+        // desabilita a parte padrão do navegador
+        e.preventDefault();
+
+        if (produto.nomeProduto === "") {
+            alert("Preencha o Nome corretamente")
+            return;
+        } 
+        
+        if (produto.categoria == "") {
+            alert("Preencha o categoria corretamente")
+            return;
+        } 
+        
+        if (produto.descricao == "") {
+            alert("Preencha o descrição corretamente")
+            return;
+        } 
+        
+        if (produto.preco == "") {
+            alert("Preencha o preço corretamente")
+            return;
+        } 
+        
+        if (produto.tamanho == "") {
+            alert("Preencha o tamanho corretamente")
+            return;
+        } 
+        
+        if (produto.ingredientes == "") {
+            alert("Preencha o ingredientes corretamente")
+            return;
+        }
+
+        const formData = new FormData();
+
+        const produtoJson = new Blob(
+         [JSON.stringify(produto)],
+         { type: "application/json" }
+        );
+
+        formData.append("produto", produtoJson);
+        formData.append("imagem", imagemSelecionada);
+
+        cadastrarProduto(formData)
+        .then((resposta) => {
+            alert("Produto cadastrado com sucesso!");
+            console.log(resposta);
+
+              setProduto({
+                nomeProduto: "",
+                categoria: "",
+                descricao: "",
+                preco: "",
+                tamanho: "",
+                ingredientes: "",
+                dadosImagem: null
+            });
+        });
+    }
+
+    function limparForms() {
+        setProduto({
+    nomeProduto: "",
+    categoria: "",
+    descricao: "",
+    preco: "",
+    tamanho: "",
+    ingredientes: "",
+    dadosImagem: null
+});
+    }
+
+     function permitirArrastar(e) {
+    e.preventDefault();
+}
+
+function soltarImagem(e) {
+
+    e.preventDefault();
+
+    const arquivo = e.dataTransfer.files[0];
+
+    if (arquivo) {
+        setImagemSelecionada(arquivo);
+    }
+}
+
+   function selecionarImagem(e) {
+
+        const arquivo = e.target.files[0];
+
+        if (arquivo) {
+            setImagemSelecionada(arquivo);
+        }
+    }
+
+
     return (
         <section className={styles.sec}>
-           <div className={styles.imgLateral}></div>
            <div className={styles.container}>
                 <div className={styles.tela}>
                     <div className={styles.titles}>
@@ -17,7 +132,7 @@ function CadastroProduto() {
                         </div>
                     </div>
 
-                    <form>
+                    <form onSubmit={cadastrarProdutoPost}>
 
                 {/* 
                     Essa div representa a PRIMEIRA LINHA.
@@ -41,6 +156,10 @@ function CadastroProduto() {
                             id="nome"
                             type="text"
                             placeholder="Ex: Cappuccino de Caramelo"
+                            value={produto.nomeProduto} onChange={(e) => {
+                            setProduto({...produto, nomeProduto: e.target.value})
+                           
+                        }} 
                         />
 
                     </div>
@@ -61,6 +180,10 @@ function CadastroProduto() {
                             id="categoria"
                             type="text"
                             placeholder="Selecione uma categoria"
+                        value={produto.categoria} onChange={(e) => {
+                            setProduto({...produto, categoria: e.target.value})
+                           
+                        }} 
                         />
 
                     </div>
@@ -86,6 +209,13 @@ function CadastroProduto() {
                         id="descricao"
                         rows='5'
                         placeholder="Descreva o produto..."
+                         value={produto.descricao}
+    onChange={(e) =>
+        setProduto({
+            ...produto,
+            descricao: e.target.value
+        })
+    }
                     ></textarea>
 
                 </div>
@@ -111,6 +241,10 @@ function CadastroProduto() {
                             id="preco"
                             type="number"
                             placeholder="Ex: 12,90"
+                            value={produto.preco} onChange={(e) => {
+                            setProduto({...produto, preco: e.target.value})
+                           
+                        }} 
                         />
 
                     </div>
@@ -127,6 +261,10 @@ function CadastroProduto() {
                             id="tamanho"
                             type="text"
                             placeholder="Ex: 300ml"
+                            value={produto.tamanho} onChange={(e) => {
+                            setProduto({...produto, tamanho: e.target.value})
+                           
+                        }} 
                         />
 
                     </div>
@@ -143,6 +281,10 @@ function CadastroProduto() {
                             id="ingredientes"
                             type="text"
                             placeholder="Ex: Café, leite, caramelo..."
+                            value={produto.ingredientes} onChange={(e) => {
+                            setProduto({...produto, ingredientes: e.target.value})
+                           
+                        }} 
                         />
 
                     </div>
@@ -154,7 +296,7 @@ function CadastroProduto() {
                             type="reset" faz o formulário voltar
                             aos valores iniciais quando estiver funcionando.
                         */}
-                        <button type="reset">
+                        <button type="button" onClick={limparForms}>
                             🗑 Limpar
                         </button>
 
@@ -169,22 +311,47 @@ function CadastroProduto() {
                     </div>
                     </div>
 
-                    {/* Área visual destinada à imagem */}
-                    <div className={styles.imagemProduto}>
+                   <label
+    className={styles.imagemProduto}
+    onDragOver={permitirArrastar}
+    onDrop={soltarImagem}
+>
 
-                        {/* Ícone provisório */}
-                        <span><img src={update} alt="" /></span>
+    <input
+        type="file"
+        accept="image/png, image/jpeg"
+        onChange={selecionarImagem}
+    />
 
-                        <strong>Imagem do produto</strong>
+    {imagemSelecionada ? (
+        <>
+            <span className={styles.imagemSucesso}>
+                <img src={conclusao} alt="" />
+            </span>
 
-                        <small>
-                            Clique para enviar ou arraste o arquivo
-                            <br />
-                            (PNG, JPG até 5MB)
-                        </small>
+            <strong>Imagem selecionada!</strong>
 
-                    </div>
+            <small>
+                {imagemSelecionada.name}
+            </small>
+        </>
+    ) : (
+        <>
+            <span>
+                <img src={download} alt="" />
+            </span>
 
+            <strong>Imagem do produto</strong>
+
+            <small>
+                Clique para enviar ou arraste o arquivo
+                <br />
+                (PNG, JPG até 5MB)
+            </small>
+        </>
+    )}
+
+</label>
                 </div>
 
             </form>
