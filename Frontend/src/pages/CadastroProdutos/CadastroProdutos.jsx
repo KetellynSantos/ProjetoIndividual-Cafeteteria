@@ -121,247 +121,173 @@ function soltarImagem(e) {
 
 
     return (
-        <section className={styles.sec}>
-           <div className={styles.container}>
-                <div className={styles.tela}>
-                    <div className={styles.titles}>
-                        <img src={icon} alt="Xicara com café" />
-                        <div className={styles.textos}>
-                            <h1>Cadastrar Produto</h1>
-        <p>Adicione um novo produto para cafeteria</p>
-                        </div>
-                    </div>
+       <section className={styles.sec}>
+    <div className={styles.container}>
+        <div className={styles.tela}>
+            <div className={styles.titles}>
+                <img src={icon} alt="Xícara com café" />
+                <div className={styles.textos}>
+                    <h1>Cadastrar Produto</h1>
+                    <p>Adicione um novo produto para cafeteria</p>
+                </div>
+            </div>
 
-                    <form onSubmit={cadastrarProdutoPost}>
-
-                {/* 
-                    Essa div representa a PRIMEIRA LINHA.
-                    Dentro dela teremos dois campos lado a lado.
-                */}
+            <form onSubmit={cadastrarProdutoPost}>
                 <div className={styles.linha}>
-
-                    {/* Campo Nome */}
                     <div className={styles.campo}>
-
-                        {/* 
-                            label é o nome do campo.
-                            htmlFor conecta o label ao input através do id.
-                        */}
-                        <label htmlFor="nome">
-                            Nome do produto
-                        </label>
-
-                        {/* Campo onde o usuário digita o nome */}
+                        <label htmlFor="nome">Nome do produto</label>
                         <input
                             id="nome"
                             type="text"
                             placeholder="Ex: Cappuccino de Caramelo"
-                            value={produto.nomeProduto} onChange={(e) => {
-                            setProduto({...produto, nomeProduto: e.target.value})
-                           
-                        }} 
+                            value={produto.nomeProduto}
+                            onChange={(e) =>
+                                setProduto({
+                                    ...produto,
+                                    nomeProduto: e.target.value
+                                })
+                            }
                         />
-
                     </div>
 
-
-                    {/* Campo Categoria */}
                     <div className={styles.campo}>
-
-                        <label htmlFor="categoria">
-                            Categoria
-                        </label>
-
-                        {/* 
-                            Por enquanto estamos usando input.
-                            Depois podemos transformar isso em select.
-                        */}
+                        <label htmlFor="categoria">Categoria</label>
                         <input
                             id="categoria"
                             type="text"
                             placeholder="Selecione uma categoria"
-                        value={produto.categoria} onChange={(e) => {
-                            setProduto({...produto, categoria: e.target.value})
-                           
-                        }} 
+                            value={produto.categoria}
+                            onChange={(e) =>
+                                setProduto({
+                                    ...produto,
+                                    categoria: e.target.value
+                                })
+                            }
                         />
-
                     </div>
-
                 </div>
 
-
-                {/* 
-                    Descrição ocupa uma linha inteira,
-                    por isso fica fora da .linha.
-                */}
                 <div className={styles.campo}>
-
-                    <label htmlFor="descricao">
-                        Descrição
-                    </label>
-
-                    {/* 
-                        textarea é usado quando queremos
-                        permitir várias linhas de texto.
-                    */}
+                    <label htmlFor="descricao">Descrição</label>
                     <textarea
                         id="descricao"
-                        rows='5'
+                        rows="5"
                         placeholder="Descreva o produto..."
-                         value={produto.descricao}
-    onChange={(e) =>
-        setProduto({
-            ...produto,
-            descricao: e.target.value
-        })
-    }
+                        value={produto.descricao}
+                        onChange={(e) =>
+                            setProduto({
+                                ...produto,
+                                descricao: e.target.value
+                            })
+                        }
                     ></textarea>
-
                 </div>
 
-                {/* 
-                    Área inferior.
-                    Aqui vamos colocar o botão de limpar,
-                    salvar e a área da imagem.
-                */}
                 <div className={styles.areaInferior}>
-              
                     <div className={styles.coluna}>
-  <div className={styles.linha2}>
+                        <div className={styles.linha2}>
+                            <div className={styles.campo}>
+                                <label htmlFor="preco">Preço (R$)</label>
+                                <input
+                                    id="preco"
+                                    type="number"
+                                    placeholder="Ex: 12,90"
+                                    value={produto.preco}
+                                    onChange={(e) =>
+                                        setProduto({
+                                            ...produto,
+                                            preco: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
 
-                    {/* Preço */}
-                    <div className={styles.campo}>
+                            <div className={styles.campo}>
+                                <label htmlFor="tamanho">Tamanho</label>
+                                <input
+                                    id="tamanho"
+                                    type="text"
+                                    placeholder="Ex: 300ml"
+                                    value={produto.tamanho}
+                                    onChange={(e) =>
+                                        setProduto({
+                                            ...produto,
+                                            tamanho: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
 
-                        <label htmlFor="preco">
-                            Preço (R$)
-                        </label>
+                            <div className={styles.campo}>
+                                <label htmlFor="ingredientes">Ingredientes</label>
+                                <input
+                                    id="ingredientes"
+                                    type="text"
+                                    placeholder="Ex: Café, leite, caramelo..."
+                                    value={produto.ingredientes}
+                                    onChange={(e) =>
+                                        setProduto({
+                                            ...produto,
+                                            ingredientes: e.target.value
+                                        })
+                                    }
+                                />
+                            </div>
+                        </div>
 
+                        <div className={styles.botoes}>
+                            <button type="button" onClick={limparForms}>
+                                🗑 Limpar
+                            </button>
+
+                            <button type="submit">
+                                🔒 Salvar Produto
+                            </button>
+                        </div>
+                    </div>
+
+                    <label
+                        className={styles.imagemProduto}
+                        onDragOver={permitirArrastar}
+                        onDrop={soltarImagem}
+                    >
                         <input
-                            id="preco"
-                            type="number"
-                            placeholder="Ex: 12,90"
-                            value={produto.preco} onChange={(e) => {
-                            setProduto({...produto, preco: e.target.value})
-                           
-                        }} 
+                            type="file"
+                            accept="image/png, image/jpeg"
+                            onChange={selecionarImagem}
                         />
 
-                    </div>
+                        {imagemSelecionada ? (
+                            <>
+                                <span className={styles.imagemSucesso}>
+                                    <img src={conclusao} alt="" />
+                                </span>
 
+                                <strong>Imagem selecionada!</strong>
 
-                    {/* Tamanho */}
-                    <div className={styles.campo}>
+                                <small>{imagemSelecionada.name}</small>
+                            </>
+                        ) : (
+                            <>
+                                <span>
+                                    <img src={download} alt="" />
+                                </span>
 
-                        <label htmlFor="tamanho">
-                            Tamanho
-                        </label>
+                                <strong>Imagem do produto</strong>
 
-                        <input
-                            id="tamanho"
-                            type="text"
-                            placeholder="Ex: 300ml"
-                            value={produto.tamanho} onChange={(e) => {
-                            setProduto({...produto, tamanho: e.target.value})
-                           
-                        }} 
-                        />
-
-                    </div>
-
-
-                    {/* Ingredientes */}
-                    <div className={styles.campo}>
-
-                        <label htmlFor="ingredientes">
-                            Ingredientes
-                        </label>
-
-                        <input
-                            id="ingredientes"
-                            type="text"
-                            placeholder="Ex: Café, leite, caramelo..."
-                            value={produto.ingredientes} onChange={(e) => {
-                            setProduto({...produto, ingredientes: e.target.value})
-                           
-                        }} 
-                        />
-
-                    </div>
-                    </div>
-
-                    <div className={styles.botoes}>
-
-                        {/* 
-                            type="reset" faz o formulário voltar
-                            aos valores iniciais quando estiver funcionando.
-                        */}
-                        <button type="button" onClick={limparForms}>
-                            🗑 Limpar
-                        </button>
-
-                        {/* 
-                            type="submit" indica que esse botão
-                            envia o formulário.
-                        */}
-                        <button type="submit">
-                            🔒 Salvar Produto
-                        </button>
-
-                    </div>
-                    </div>
-
-                   <label
-    className={styles.imagemProduto}
-    onDragOver={permitirArrastar}
-    onDrop={soltarImagem}
->
-
-    <input
-        type="file"
-        accept="image/png, image/jpeg"
-        onChange={selecionarImagem}
-    />
-
-    {imagemSelecionada ? (
-        <>
-            <span className={styles.imagemSucesso}>
-                <img src={conclusao} alt="" />
-            </span>
-
-            <strong>Imagem selecionada!</strong>
-
-            <small>
-                {imagemSelecionada.name}
-            </small>
-        </>
-    ) : (
-        <>
-            <span>
-                <img src={download} alt="" />
-            </span>
-
-            <strong>Imagem do produto</strong>
-
-            <small>
-                Clique para enviar ou arraste o arquivo
-                <br />
-                (PNG, JPG até 5MB)
-            </small>
-        </>
-    )}
-
-</label>
+                                <small>
+                                    Clique para enviar ou arraste o arquivo
+                                    <br />
+                                    (PNG, JPG até 5MB)
+                                </small>
+                            </>
+                        )}
+                    </label>
                 </div>
-
             </form>
-
-                   
-           </div>
-                </div>
-
-                
-        </section>
+        </div>
+    </div>
+</section>
     );
 }
 

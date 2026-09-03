@@ -7,18 +7,16 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
 .sec {
+    min-height: 100vh;
     background-color: #EEEEEF;
-    height: 100vh;
-    gap: 24px;
-     display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
+    padding: 90px 24px 24px;
 }
 
 .container {
-    height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -26,12 +24,11 @@
 }
 
 .tela {
-    background-color: #f8f8f8;
+    width: min(1100px, 100%);
+    background-color: #F8F8F8;
     border-radius: 6px;
-    height: 80vh;
-    width: 80%;
-    padding: 22px 20px;
-    box-shadow: 0px 0px 20px 10px #6e4b87;
+    padding: 22px 24px;
+    box-shadow: 0 0 20px 6px #6E4B87;
 }
 
 .titles {
@@ -40,219 +37,284 @@
     gap: 15px;
 }
 
+.titles img {
+    width: 80px;
+    height: auto;
+}
+
 .textos {
     display: flex;
     flex-direction: column;
     text-align: left;
-    line-height: 1px;
+    gap: 4px;
 }
 
-h1 {
+.textos h1 {
     color: #431166;
     font-family: "Comic Relief", system-ui;
-    font-size: 30px;
-    font-weight: bold;
+    font-size: clamp(24px, 2.2vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
-p {
-    font-family: "Comic Relief", system-ui;
+.textos p {
     color: #8C719F;
+    font-family: "Comic Relief", system-ui;
     font-size: 12px;
+    line-height: 1.3;
 }
 
-/* 
-    Cria uma linha flexível.
-    Os campos colocados dentro dela ficarão lado a lado.
-*/
 form {
-    height: 60vh;
-display: flex;
-flex-direction: column;
-justify-content: center;
-padding: 12px;
-margin-top: 60px;
-}
-
-.linha {
     display: flex;
-    gap: 20px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 16px;
+    padding: 8px 0;
+    margin-top: 20px;
 }
 
+.linha,
 .linha2 {
     display: flex;
     gap: 20px;
-    margin-bottom: 20px;
 }
 
-
-/* 
-    Cada campo ocupa o espaço disponível igualmente.
-*/
-.linha .campo {
-    flex: 1; /* Divide o espaço disponível */
+.linha .campo,
+.linha2 .campo {
+    flex: 1;
+    min-width: 0;
 }
 
-
-/* 
-    Um campo individual.
-*/
 .campo {
-    display: flex; /* Também usamos Flexbox */
-    flex-direction: column; /* Label fica acima do input */
-    text-align: left; /* Label fina encostada no canto esquerdo*/
-    gap: 4px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: left;
 }
 
-/* 
-    Estilização dos textos dos labels.
-*/
 .campo label {
-    font-size: 18px;
+    color: #6E4B87;
+    font-size: 16px;
     font-weight: 500;
-    color: #6e4b87;
 }
 
-/* 
-    Estilo dos inputs.
-*/
 .campo input {
-    width: 100%; /* Ocupa toda a largura do campo */
-    height: 40px; /* Altura */
-    padding: 0 12px; /* Espaçamento interno horizontal */
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
     border: 2px solid #E6E6E6;
     border-radius: 4px;
     background-color: #F8F8F8;
     outline: none;
-    color: #431166; 
+    color: #431166;
 }
 
-
-/* 
-    Quando o usuário clicar no input.
-*/
 .campo input:focus {
-    border-color: #8c719f;       /* Destaca a borda */
+    border-color: #8C719F;
 }
 
-
-/* 
-    Área de descrição.
-*/
 .campo textarea {
-    width: 100%; /* Ocupa toda a largura */
-    min-height: 90px; /* Altura mínima */
-    padding: 12px; /* Espaçamento interno */
-    resize: vertical; /* Permite redimensionar verticalmente */
+    width: 100%;
+    height: 85px;
+    padding: 12px;
+    resize: vertical;
     border: 1px solid #E6E6E6;
-    border-radius: 4px; 
+    border-radius: 4px;
     background-color: #F8F8F8;
-    outline: none;  
-    color: #431166; 
+    outline: none;
+    color: #431166;
 }
 
-
-/* 
-    Quando clicar na descrição.
-*/
 .campo textarea:focus {
-    border-color: #8c719f;
+    border-color: #8C719F;
 }
 
 .areaInferior {
     display: flex;
-    gap: 28px; 
-    margin-top: 25px;
+    gap: 28px;
+    align-items: flex-end;
 }
 
 .coluna {
-    width: 90%;
+    flex: 1;
+    min-width: 0;
 }
 
-/* 
-    Área onde ficam os dois botões.
-*/
+.linha2 {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
 .botoes {
     display: flex;
     gap: 15px;
-    flex: 1; /* Ocupa o espaço disponível */
 }
 
-/* 
-    Estilo geral dos botões.
-*/
 .botoes button {
-    flex: 1; /* Os dois possuem tamanho semelhante */
-    height: 42px; 
+    flex: 1;
+    height: 42px;
+    border: 1px solid #8C719F;
     border-radius: 4px;
-    border: 1px solid #8c719f; 
     background-color: transparent;
-    color: #6e4b87;
+    color: #6E4B87;
     cursor: pointer;
 }
 
-
-/* 
-    Segundo botão.
-    Usamos nth-child para selecionar o segundo botão.
-*/
 .botoes button:nth-child(2) {
-    background-color: #6e4b87;
-    color: white;        
+    background-color: #6E4B87;
+    color: white;
 }
 
-
-/* 
-    Área reservada para a imagem do produto.
-*/
 .imagemProduto {
-    width: 100px;
+    width: 250px;
+    min-width: 250px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #d8c7e3;
-    border-radius: 4px; 
+    gap: 10px;
+    border: 3px dashed #5314A7;
+    border-radius: 12px;
+    background-color: #D8C7E3;
     text-align: center;
-}
-
-
-/* 
-    Título da área de imagem.
-*/
-.imagemProduto strong {
-    font-size: 12px;
-    color: #4b2865;     
-}
-
-/* 
-    Texto menor da área de imagem.
-*/
-.imagemProduto small {
-    font-size: 8px;
-    color: #8c719f;
-    line-height: 1;
+    cursor: pointer;
 }
 
 .imagemProduto input {
     display: none;
 }
 
-.imagemProduto {
-    width: 250px;
-    height: 150px;
+.imagemProduto strong {
+    color: #4B2865;
+    font-size: 12px;
+}
 
-    border: 3px dashed #5314a7;
-    border-radius: 12px;
+.imagemProduto small {
+    max-width: 90%;
+    color: #8C719F;
+    font-size: 8px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
 
+.imagemSucesso {
+    width: 50px;
+    height: 50px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+    background-color: #D8F5DF;
+    font-size: 30px;
+    font-weight: 700;
+}
 
-    cursor: pointer;
+@media (max-height: 800px) {
+    .sec {
+        padding-top: 80px;
+    }
 
-    text-align: center;
-    gap: 10px;
+    .tela {
+        padding: 16px 22px;
+    }
+
+    .titles img {
+        width: 70px;
+    }
+
+    .textos h1 {
+        font-size: 27px;
+    }
+
+    form {
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .campo label {
+        font-size: 14px;
+    }
+
+    .campo input {
+        height: 36px;
+    }
+
+    .campo textarea {
+        height: 70px;
+    }
+
+    .linha,
+    .linha2 {
+        gap: 16px;
+    }
+
+    .linha2 {
+        margin-bottom: 12px;
+    }
+
+    .areaInferior {
+        gap: 20px;
+    }
+
+    .imagemProduto {
+        width: 220px;
+        min-width: 220px;
+        height: 130px;
+    }
+
+    .botoes button {
+        height: 38px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sec {
+        align-items: flex-start;
+        padding: 80px 16px 24px;
+    }
+
+    .tela {
+        padding: 20px;
+    }
+
+    .areaInferior {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .imagemProduto {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .linha,
+    .linha2 {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .titles {
+        align-items: center;
+    }
+
+    .titles img {
+        width: 60px;
+    }
+
+    .textos h1 {
+        font-size: 22px;
+        white-space: normal;
+    }
+
+    .textos p {
+        font-size: 10px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
 }
