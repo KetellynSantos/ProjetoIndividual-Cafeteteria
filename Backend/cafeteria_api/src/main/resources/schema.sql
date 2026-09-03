@@ -6,5 +6,5 @@ CREATE TABLE produtos (
   preco DECIMAL(10,2) NOT NULL,
   tamanho INT NOT NULL,
   ingredientes VARCHAR(255) NOT NULL,
-  dados_imagem BLOB NOT NULL
+  dados_imagem BLOB
 );
