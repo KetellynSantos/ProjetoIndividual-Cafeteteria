@@ -159,6 +159,10 @@ form {
     background-color: transparent;
     color: #6E4B87;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .botoes button:nth-child(2) {
