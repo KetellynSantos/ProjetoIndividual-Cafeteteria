@@ -4,6 +4,8 @@ import icon from '../../assets/icon/xicaraTexto.png'
 import { cadastrarProduto } from "../../services/produtoService";
 import conclusao from '../../assets/icon/tarefa-concluida.png'
 import download from '../../assets/icon/download-da-nuvem.png'
+import lixinho from '../../assets/icon/lixeira-xmark.png'
+import cadeado from '../../assets/icon/trancar.png'
 
 
 function CadastroProduto() {
@@ -237,11 +239,11 @@ function soltarImagem(e) {
 
                         <div className={styles.botoes}>
                             <button type="button" onClick={limparForms}>
-                                🗑 Limpar
+                                <img src={lixinho} alt="" /> <span>Limpar</span>
                             </button>
 
                             <button type="submit">
-                                🔒 Salvar Produto
+                                <img src={cadeado} alt="" /> <span>Salvar Produto</span>
                             </button>
                         </div>
                     </div>
