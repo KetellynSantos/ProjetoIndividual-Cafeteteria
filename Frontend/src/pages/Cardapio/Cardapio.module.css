@@ -1,0 +1,274 @@
+.cardapio {
+    min-height: 100vh;
+    padding: 120px 24px 40px;
+    background-color: #F4F2F8;
+}
+
+.container {
+    width: min(1680px, 100%);
+    margin: 0 auto;
+}
+
+.cabecalhoProdutos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.tituloProdutos {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.iconeTitulo {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
+}
+
+.tituloProdutos h1 {
+    margin: 0;
+    color: #431166;
+    font-family: "Comic Relief", system-ui;
+    font-size: clamp(25px, 2.2vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: left;
+}
+
+.tituloProdutos p {
+    margin-top: 4px;
+    color: #8C719F;
+    font-family: "Comic Relief", system-ui;
+    font-size: 13px;
+    line-height: 1.3;
+}
+
+.filtro {
+    width: 310px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.filtro span {
+    color: #171717;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.filtro input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #431166;
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+}
+
+.filtro input::placeholder {
+    color: #B8B8B8;
+}
+
+.gridProdutos {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px 38px;
+}
+
+.cardProduto {
+    min-width: 0;
+    overflow: hidden;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12);
+}
+
+.imagemProduto {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+
+.imagemPlaceholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #A88A9D, #D6C5D4);
+    color: #FFFFFF;
+    font-size: 42px;
+}
+
+.informacoesProduto {
+    min-height: 82px;
+    padding: 7px 12px 8px;
+    text-align: left;
+}
+
+.informacoesProduto h2 {
+    margin: 0 0 2px;
+    color: #431166;
+    font-family: "Comic Relief", system-ui;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.informacoesProduto p {
+    margin: 0;
+    color: #8C719F;
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    line-height: 1.4;
+    width: 70%;
+}
+
+.rodapeCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 5px;
+}
+
+.rodapeCard strong {
+    color: #431166;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.rodapeCard button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #B78BCF;
+    color: #431166;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+@media (max-height: 800px) {
+    .cardapio {
+        padding-top: 105px;
+        padding-bottom: 25px;
+    }
+
+    .cabecalhoProdutos {
+        margin-bottom: 28px;
+    }
+
+    .gridProdutos {
+        row-gap: 14px;
+    }
+
+    .imagemProduto {
+        height: 75px;
+    }
+
+    .informacoesProduto {
+        min-height: 78px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .gridProdutos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .cabecalhoProdutos {
+        align-items: flex-end;
+    }
+
+    .filtro {
+        width: 270px;
+    }
+}
+
+@media (max-width: 800px) {
+    .cardapio {
+        padding: 100px 20px 30px;
+    }
+
+    .cabecalhoProdutos {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .filtro {
+        width: 100%;
+    }
+
+    .gridProdutos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .cardapio {
+        padding: 95px 16px 25px;
+    }
+
+    .tituloProdutos {
+        gap: 8px;
+    }
+
+    .iconeTitulo {
+        width: 45px;
+        height: 45px;
+        font-size: 32px;
+    }
+
+    .tituloProdutos h1 {
+        font-size: 24px;
+    }
+
+    .tituloProdutos p {
+        font-size: 10px;
+    }
+
+    .gridProdutos {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .imagemProduto {
+        height: 150px;
+    }
+
+    .informacoesProduto {
+        min-height: auto;
+        padding: 10px 12px;
+    }
+
+    .informacoesProduto h2 {
+        font-size: 17px;
+    }
+
+    .informacoesProduto p {
+        font-size: 11px;
+    }
+
+    .rodapeCard strong {
+        font-size: 15px;
+    }
+}
