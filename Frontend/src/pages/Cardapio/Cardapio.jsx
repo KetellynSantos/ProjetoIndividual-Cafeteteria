@@ -9,16 +9,26 @@ import { useEffect, useState } from "react";
 
 export function Cardapio() {
 
-const [produtos, setProdutos] = useState([])
 
-useEffect(()=>{
-    listarProdutos()
-    .then((resposta) => {
-        alert("Produto na lista")
-        console.log(resposta)
-        setProdutos(resposta.data)
-    })
-},[])
+    const [produtos, setProdutos] = useState([]);
+    const [pesquisa, setPesquisa] = useState("");
+
+    useEffect(() => {
+        listarProdutos()
+            .then((resposta) => {
+                setProdutos(resposta.data);
+            })
+            .catch((erro) => {
+                console.error("Erro ao buscar produtos:", erro);
+            });
+    }, []);
+
+    // Filtra os produtos de acordo com o que foi digitado
+    const produtosFiltrados = produtos.filter((produto) =>
+        produto.nomeProduto
+            .toLowerCase()
+            .includes(pesquisa.toLowerCase())
+    );
 
     return (
         <main className={styles.cardapio}>
@@ -40,12 +50,14 @@ useEffect(()=>{
                         <input
                             type="text"
                             placeholder="Selecione uma categoria"
+                            value={pesquisa}
+                            onChange={(e) => setPesquisa(e.target.value)}
                         />
                     </div>
                 </div>
 
                 <div className={styles.gridProdutos}>
-                    {produtos.map((produto) => (
+                    {produtosFiltrados.map((produto) => (
                         <article
                             className={styles.cardProduto}
                             key={produto.id}
@@ -75,6 +87,12 @@ useEffect(()=>{
                         </article>
                     ))}
                 </div>
+
+                  {produtosFiltrados.length === 0 && (
+                    <p className={styles.nenhumProduto}>
+                        Nenhum produto encontrado.
+                    </p>
+                )}
             </section>
         </main>
     );
