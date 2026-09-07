@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from '../CadastroProdutos/CadastroProdutos.module.css'
 import icon from '../../assets/icon/xicaraTexto.png'
 import { cadastrarProduto } from "../../services/produtoService";
@@ -9,6 +10,9 @@ import cadeado from '../../assets/icon/trancar.png'
 
 
 function CadastroProduto() {
+    const navigate = useNavigate();
+
+    const [cadastroConcluido, setCadastroConcluido] = useState(false);
 
     const [produto, setProduto] = useState({
     nomeProduto: "",
@@ -21,6 +25,7 @@ function CadastroProduto() {
     });
 
     const [imagemSelecionada, setImagemSelecionada] = useState(null);
+    
 
 
     function cadastrarProdutoPost(e) {
@@ -68,21 +73,29 @@ function CadastroProduto() {
         formData.append("produto", produtoJson);
         formData.append("imagem", imagemSelecionada);
 
+       
         cadastrarProduto(formData)
-        .then((resposta) => {
-            alert("Produto cadastrado com sucesso!");
-            console.log(resposta);
+    .then((resposta) => {
 
-              setProduto({
-                nomeProduto: "",
-                categoria: "",
-                descricao: "",
-                preco: "",
-                tamanho: "",
-                ingredientes: "",
-                dadosImagem: null
-            });
+        setCadastroConcluido(true);
+
+        setTimeout(() => {
+            navigate("/cardapio");
+        }, 2000);
+
+        console.log(resposta);
+
+        setProduto({
+            nomeProduto: "",
+            categoria: "",
+            descricao: "",
+            preco: "",
+            tamanho: "",
+            ingredientes: "",
+            dadosImagem: null
         });
+    });
+
     }
 
     function limparForms() {
@@ -133,6 +146,30 @@ function soltarImagem(e) {
                     <p>Adicione um novo produto para cafeteria</p>
                 </div>
             </div>
+
+            {cadastroConcluido && (
+    <div className={styles.overlaySucesso}>
+
+        <div className={styles.cardSucesso}>
+
+            <div className={styles.iconeSucesso}>
+                ✓
+            </div>
+
+            <h2>Produto cadastrado!</h2>
+
+            <p>
+                O produto foi adicionado ao cardápio com sucesso.
+            </p>
+
+            <div className={styles.carregando}>
+                Redirecionando para o cardápio...
+            </div>
+
+        </div>
+
+    </div>
+)}
 
             <form onSubmit={cadastrarProdutoPost}>
                 <div className={styles.linha}>
