@@ -215,6 +215,87 @@ form {
     font-weight: 700;
 }
 
+.overlaySucesso {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 999;
+}
+
+.cardSucesso {
+    width: min(420px, 90%);
+
+    background: white;
+    border-radius: 20px;
+
+    padding: 40px 30px;
+
+    text-align: center;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+
+    animation: aparecer 0.3s ease;
+}
+
+.iconeSucesso {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 20px;
+
+    border-radius: 50%;
+
+    background-color: #dff5e5;
+    color: #2e9b52;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.cardSucesso h2 {
+    margin-bottom: 10px;
+
+    font-size: 24px;
+}
+
+.cardSucesso p {
+    margin-bottom: 20px;
+
+    color: #666;
+    font-size: 15px;
+}
+
+.carregando {
+    font-size: 13px;
+    color: #888;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
 @media (max-height: 800px) {
     .sec {
         padding-top: 80px;
